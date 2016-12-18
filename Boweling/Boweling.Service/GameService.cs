@@ -27,12 +27,12 @@ namespace Boweling.Service
 
                 for (int i = 0; i < 10; i++)
                 {
-                    if (Rolled[thisBall] == 10) // Strike
+                    if (IsStrike(thisBall))
                     {
                         score += 10 + Rolled[thisBall + 1] + Rolled[thisBall + 2];
                         thisBall++;
                     }
-                    else if (Rolled[thisBall] + Rolled[thisBall + 1] == 10) // Spare
+                    else if (IsSpare(thisBall))
                     {
                         score += 10 + Rolled[thisBall + 2];
                         thisBall += 2;
@@ -45,6 +45,16 @@ namespace Boweling.Service
                 }
                 return score;
             }
+        }
+
+        private bool IsSpare(int thisBall)
+        {
+            return Rolled[thisBall] + Rolled[thisBall + 1] == 10;
+        }
+
+        private bool IsStrike(int thisBall)
+        {
+            return Rolled[thisBall] == 10;
         }
     }
 }
