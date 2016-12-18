@@ -70,5 +70,15 @@ namespace Boweling.Service.Tests
 
             Assert.AreEqual(20, gameService.Score);
         }
+
+        [TestMethod]
+        public void PerfectGameScoreIs300()
+        {
+            for (int i = 0; i < 12; i++)
+            {
+                gameService.Roll(10);
+            }
+            Assert.AreEqual(300, gameService.Score);
+        }
     }
 }
